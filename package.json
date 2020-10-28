@@ -1,0 +1,26 @@
+{
+  "name": "hazi_4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markkollar/hazi_4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markkollar/hazi_4/issues"
+  },
+  "homepage": "https://github.com/markkollar/hazi_4#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4",
+    "standard-version": "^9.0.0"
+  }
+}
