@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/markkollar/hazi_4/compare/v1.0.1...v1.1.0) (2020-10-30)
+
+
+### Features
+
+* Making Frontend UI ([2541376](https://github.com/markkollar/hazi_4/commit/25413765958132b6f5b022e349316412b509efcd))
+
 ### 1.0.1 (2020-10-28)
 
 
