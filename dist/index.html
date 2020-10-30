@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weight Tracker - Homework 4</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+
+    <header class="header">
+        <div class="header__title">
+            <h1 class="header__title__text">Weight Tracker</h1>
+        </div>
+        <div class="header__picker">
+            <input type="date" max="" id="date-picker" class="header__picker__date">
+            <input type="number" class="header__picker__weight" id="weight-picker">
+            <button type="submit" id="weight-add">ADD</button>
+        </div>
+    </header>
+
+    <section class="history">
+        <div class="history__title">
+            <h1 class="history__title__text">
+                History
+            </h1>
+        </div>
+        <div class="history__hero">
+            <div class="history__hero__list">
+                <p id="date-place"></p>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="stat">
+        <div class="stat__title">
+            <h1 class="stat__title__text">Statistic</h1>
+        </div>
+        <div class="stat__filter">
+            <button>Week</button>
+            <button>Month</button>
+            <button>Year</button>
+            <button>Lifetime</button>
+        </div>
+    </section>
     
 </body>
 </html>
