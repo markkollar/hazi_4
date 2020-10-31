@@ -20,9 +20,12 @@
   },
   "homepage": "https://github.com/markkollar/hazi_4#readme",
   "devDependencies": {
+    "chart.js": "^2.9.4",
     "date-fns": "^2.16.1",
     "lite-server": "^2.5.4",
-    "requirejs": "^2.3.6",
     "standard-version": "^9.0.0"
+  },
+  "dependencies": {
+    "@types/chart.js": "^2.9.27"
   }
 }

@@ -48,6 +48,7 @@ input{
 
         & input, button {
             margin:10px;
+            width: 15   0px;
         }
     }
 }
@@ -55,25 +56,20 @@ input{
 
 .history{
     
-
     &__hero {
 
-
-        &__list{
-            
-
-            &__items{
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                padding:2px;
-                border-top:1px solid #000;
+        &__items{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding:2px;   
+            border-top:1px solid #000;
                 
 
-                &:last-of-type{
-                    border-bottom: 1px solid #000;
-                }
-            }
+            &:last-of-type{
+                 border-bottom: 1px solid #000;
+           }
         }
+        
     }
 }

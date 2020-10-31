@@ -1,36 +1,17 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var dateFns = __importStar(require("date-fns"));
-window.addEventListener('DOMContentLoaded', function (e) {
+// import * as dateFns from 'date-fns';
+// import * as Chart from 'chart.js';
+window.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded');
 });
-var dateElement = document.getElementById('date-picker');
-var weightElement = document.getElementById('weight-picker');
-var datePlace = document.getElementById('date-place');
+let dateElement = document.getElementById('date-picker');
+let weightElement = document.getElementById('weight-picker');
+const parentDivEl = document.querySelector('.history__hero');
 function maxDate() {
-    var today = new Date();
-    var day = today.getDate();
-    var month = today.getMonth() + 1;
-    var year = today.getFullYear();
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
     if (day < 10) {
         day = '0' + day;
     }
@@ -41,27 +22,50 @@ function maxDate() {
     dateElement === null || dateElement === void 0 ? void 0 : dateElement.setAttribute('max', today);
 }
 maxDate();
-var addElement = document.getElementById('weight-add');
+const addElement = document.getElementById('weight-add');
 addElement.addEventListener('click', function (e) {
     e.preventDefault;
     addHistory();
+    let count = getCount(parentDivEl, false);
+    console.log(count);
+    removeLastEl(count);
 });
 function addHistory() {
-    var dateValue = dateElement.value.trim();
-    var newDate = new Date(dateValue);
-    var datte = dateFns.format(newDate, 'EEEE');
-    console.log('sample: ' + newDate);
-    var weightValue = weightElement.value.trim();
-    var basicDiv = document.querySelector('.history__hero');
+    const dateValue = dateElement.value.trim();
+    // let newDate: any = new Date(dateValue);
+    // const datte = dateFns.format(newDate, 'EEEE');
+    // console.log('sample: ' +datte)
+    const weightValue = weightElement.value.trim();
+    localStorage.setItem(dateValue, weightValue);
+    const basicDiv = document.querySelector('.history__hero');
     var newDiv = document.createElement('div');
-    basicDiv === null || basicDiv === void 0 ? void 0 : basicDiv.appendChild(newDiv);
-    newDiv.className = 'history__hero__list__items';
+    basicDiv.appendChild(newDiv);
+    newDiv.className = 'history__hero__items';
     var dateText = document.createElement('p');
     newDiv.appendChild(dateText);
-    dateText.appendChild(document.createTextNode(newDate));
-    newDiv.appendChild(dateText);
+    dateText.appendChild(document.createTextNode(dateValue));
+    basicDiv.insertBefore(newDiv, basicDiv.childNodes[0]);
     var weightText = document.createElement('p');
     newDiv.appendChild(weightText);
     weightText.appendChild(document.createTextNode(weightValue + ' kg'));
-    newDiv.appendChild(weightText);
+    basicDiv.insertBefore(newDiv, basicDiv.childNodes[0]);
 }
+function getCount(parent, getChildrensChildren) {
+    var relevantChildren = 0;
+    var children = parent.childNodes.length;
+    for (var i = 0; i < children; i++) {
+        if (parent.childNodes[i].nodeType != 3) {
+            if (getChildrensChildren)
+                relevantChildren += getCount(parent.childNodes[i], true);
+            relevantChildren++;
+        }
+    }
+    return relevantChildren;
+}
+function removeLastEl(count) {
+    if (count >= 10) {
+        let lastElement = document.querySelector('.history__hero');
+        lastElement.removeChild(lastElement.lastChild);
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLHVDQUF1QztBQUN2QyxxQ0FBcUM7QUFFckMsTUFBTSxDQUFDLGdCQUFnQixDQUFDLGtCQUFrQixFQUFFLEdBQUcsRUFBRTtJQUM3QyxPQUFPLENBQUMsR0FBRyxDQUFDLGtCQUFrQixDQUFDLENBQUM7QUFDcEMsQ0FBQyxDQUFDLENBQUM7QUFJSCxJQUFJLFdBQVcsR0FBRyxRQUFRLENBQUMsY0FBYyxDQUFDLGFBQWEsQ0FBcUIsQ0FBQztBQUM3RSxJQUFJLGFBQWEsR0FBRyxRQUFRLENBQUMsY0FBYyxDQUFDLGVBQWUsQ0FBcUIsQ0FBQztBQUNqRixNQUFNLFdBQVcsR0FBRyxRQUFRLENBQUMsYUFBYSxDQUFDLGdCQUFnQixDQUFtQixDQUFDO0FBRy9FLFNBQVMsT0FBTztJQUNaLElBQUksS0FBSyxHQUFRLElBQUksSUFBSSxFQUFFLENBQUM7SUFDNUIsSUFBSSxHQUFHLEdBQVEsS0FBSyxDQUFDLE9BQU8sRUFBRSxDQUFDO0lBQy9CLElBQUksS0FBSyxHQUFRLEtBQUssQ0FBQyxRQUFRLEVBQUUsR0FBQyxDQUFDLENBQUM7SUFDcEMsSUFBSSxJQUFJLEdBQUcsS0FBSyxDQUFDLFdBQVcsRUFBRSxDQUFDO0lBRS9CLElBQUcsR0FBRyxHQUFHLEVBQUUsRUFBQztRQUNSLEdBQUcsR0FBRyxHQUFHLEdBQUcsR0FBRyxDQUFDO0tBQ25CO0lBQ0QsSUFBRyxLQUFLLEdBQUUsRUFBRSxFQUFDO1FBQ1QsS0FBSyxHQUFHLEdBQUcsR0FBRyxLQUFLLENBQUM7S0FDdkI7SUFDRCxLQUFLLEdBQUcsSUFBSSxHQUFHLEdBQUcsR0FBRyxLQUFLLEdBQUcsR0FBRyxHQUFHLEdBQUcsQ0FBQztJQUV2QyxXQUFXLGFBQVgsV0FBVyx1QkFBWCxXQUFXLENBQUUsWUFBWSxDQUFDLEtBQUssRUFBRSxLQUFLLEVBQUU7QUFDNUMsQ0FB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

@@ -44,9 +44,10 @@ input {
 
 .header__picker input, .header__picker button {
   margin: 10px;
+  width: 15   0px;
 }
 
-.history__hero__list__items {
+.history__hero__items {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -54,7 +55,7 @@ input {
   border-top: 1px solid #000;
 }
 
-.history__hero__list__items:last-of-type {
+.history__hero__items:last-of-type {
   border-bottom: 1px solid #000;
 }
 /*# sourceMappingURL=main.css.map */
