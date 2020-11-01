@@ -39,7 +39,7 @@ addElement.addEventListener('click',function(e){
     addHistory();
 
     let count = getCount(parentDivEl, false);
-    console.log(count);
+    
     removeLastEl(count);
 
 })
@@ -51,7 +51,7 @@ function addHistory(){
     // let newDate: any = new Date(dateValue);
     // const datte = dateFns.format(newDate, 'EEEE');
     // console.log('sample: ' +datte)
-    const weightValue = weightElement.value.trim();
+    const weightValue = weightElement.value;
 
     localStorage.setItem(dateValue, weightValue)
     

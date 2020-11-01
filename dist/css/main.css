@@ -11,7 +11,7 @@ body {
   margin: 0 auto;
 }
 
-button {
+.primary-btn {
   background-color: #13D7BC;
   border: none;
   padding: 8px 25px;
@@ -20,7 +20,7 @@ button {
   border-radius: 10px;
 }
 
-input {
+.primary-input {
   padding: 6px 25px;
   height: 15px;
   border: 1px solid #000;
